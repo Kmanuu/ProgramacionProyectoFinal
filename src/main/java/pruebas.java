@@ -10,7 +10,7 @@ public class pruebas {
             System.out.println("❌ Error al conectar a la base de datos.");
         }
 
-        // Cerramos la conexión al final (opcional pero buena práctica)
+        // Cerramos la conexión al final
         ConnectionDB.closeConnection();
     }
 }
