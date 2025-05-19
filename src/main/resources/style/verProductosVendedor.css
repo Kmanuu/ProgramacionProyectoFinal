@@ -1,0 +1,28 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #fefefe;
+}
+
+.table-view {
+    -fx-border-color: #ddd;
+    -fx-table-cell-border-color: #e0e0e0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.table-column {
+    -fx-alignment: CENTER;
+}
+
+.button {
+    -fx-background-color: #e67e22;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #d35400;
+}

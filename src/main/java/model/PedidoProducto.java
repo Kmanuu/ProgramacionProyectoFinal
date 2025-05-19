@@ -1,29 +1,27 @@
 package model;
 
+/*
+ * Esta clase representa la tabla intermedia entre Pedido y Producto (relación muchos a muchos).
+ * Gracias a esta clase, podemos guardar cuántas unidades de cada producto se han pedido.
+ */
 public class PedidoProducto {
 
-    /* Creo que es importante que quede claro para que sirve esta entidad
-    La entidad PedidoProducto representa la relación N:M entre Pedido y Producto y permite indicar cuántas
-     unidades de cada producto se incluyen en cada pedido.
-    Sin ella, no podríamos registrar correctamente qué se compra ni en qué cantidades.”
-    */
-
-
-    // Atributos
+    // Atributos: clave compuesta y cantidad
     private int idPedido;
     private int idProducto;
     private int cantidad;
 
-    // Constructores
+    // Constructor vacío (requerido para DAOs)
     public PedidoProducto() {}
 
+    // Constructor con todos los atributos
     public PedidoProducto(int idPedido, int idProducto, int cantidad) {
         this.idPedido = idPedido;
         this.idProducto = idProducto;
         this.cantidad = cantidad;
     }
 
-    // Getters y Setters
+    // Getters y setters
     public int getIdPedido() { return idPedido; }
     public void setIdPedido(int idPedido) { this.idPedido = idPedido; }
 
@@ -33,7 +31,7 @@ public class PedidoProducto {
     public int getCantidad() { return cantidad; }
     public void setCantidad(int cantidad) { this.cantidad = cantidad; }
 
-    // Métodos
+    // toString útil para depuración o mostrar por consola
     @Override
     public String toString() {
         return "Pedido #" + idPedido + " - Producto #" + idProducto + " (Cantidad: " + cantidad + ")";

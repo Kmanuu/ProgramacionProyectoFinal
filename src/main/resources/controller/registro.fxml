@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Formulario de registro de nuevo usuario -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<GridPane fx:controller="controller.RegistroController"
+          stylesheets="@../style/registro.css"
+          xmlns:fx="http://javafx.com/fxml"
+          alignment="CENTER" hgap="10" vgap="10">
+
+    <!-- Márgenes alrededor del contenido -->
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Campo: Nombre -->
+    <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <!-- Campo: Email -->
+    <Label text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="txtEmail" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <!-- Campo: Contraseña -->
+    <Label text="Contraseña:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <PasswordField fx:id="txtContrasena" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <!-- Campo: Tipo de usuario (ComboBox) -->
+    <Label text="Tipo de usuario:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="comboTipo" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <!-- Botón para registrar -->
+    <Button fx:id="btnRegistrar" text="Registrar" onAction="#onRegistrar"
+            GridPane.rowIndex="4" GridPane.columnIndex="1"
+            GridPane.halignment="RIGHT"/>
+</GridPane>

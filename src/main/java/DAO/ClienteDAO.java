@@ -12,46 +12,37 @@ import java.util.List;
 
 public class ClienteDAO {
 
+    // Se obtiene la conexión a la base de datos
     private Connection con = ConnectionDB.getConnection();
 
-
     /**
-     * Inserta un nuevo cliente en la base de datos si no existe previamente.
-     *
-     * @param c El cliente a insertar.
-     * @return El cliente insertado si se ha realizado correctamente; null si ya existe o es nulo.
+     * Inserta un cliente nuevo si no existe ya en la base de datos
      */
-
-
     public Cliente insertCliente(Cliente c) {
-        if (c != null && findById(c.getIdCliente()) == null) {
+        // Comprobamos que el cliente no sea nulo y que no exista en la BD
+        if (c != null && findById(c.getIdUsuario()) == null) {
             Connection con = ConnectionDB.getConnection();
-            String sql = "INSERT INTO cliente (nombre, email, direccion, fechaNacimiento, nivelFidelidad) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO cliente (idUsuario, direccion, fechaNacimiento, nivelFidelidad) VALUES (?, ?, ?, ?)";
 
             try (PreparedStatement pst = con.prepareStatement(sql)) {
-                pst.setString(1, c.getNombre());
-                pst.setString(2, c.getEmail());
-                pst.setString(3, c.getDireccion());
-                pst.setString(4, c.getFechaNacimiento());
-                pst.setString(5, c.getNivelFidelidad());
+                // Insertamos los datos del cliente en la base de datos
+                pst.setInt(1, c.getIdUsuario());
+                pst.setString(2, c.getDireccion());
+                pst.setString(3, c.getFechaNacimiento());
+                pst.setString(4, c.getNivelFidelidad());
 
-                pst.executeUpdate();
-
+                pst.executeUpdate(); // Ejecutamos el insert
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
 
             return c;
         }
-        return null;
+        return null; // Si ya existe o es nulo, no se inserta
     }
 
-
-
     /**
-     * Obtiene todos los clientes de la base de datos.
-     *
-     * @return Lista de todos los clientes encontrados.
+     * Devuelve todos los clientes guardados en la base de datos
      */
     public static List<Cliente> getAll() {
         List<Cliente> clientes = new ArrayList<>();
@@ -61,11 +52,11 @@ public class ClienteDAO {
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
+
+            // Recorremos los resultados y creamos objetos Cliente
             while (rs.next()) {
                 Cliente cliente = new Cliente();
-                cliente.setIdCliente(rs.getInt("idCliente"));
-                cliente.setNombre(rs.getString("nombre"));
-                cliente.setEmail(rs.getString("email"));
+                cliente.setIdUsuario(rs.getInt("idUsuario"));
                 cliente.setDireccion(rs.getString("direccion"));
                 cliente.setFechaNacimiento(rs.getString("fechaNacimiento"));
                 cliente.setNivelFidelidad(rs.getString("nivelFidelidad"));
@@ -78,27 +69,23 @@ public class ClienteDAO {
         return clientes;
     }
 
-
     /**
-     * Busca un cliente en la base de datos por su ID.
-     *
-     * @param id El ID del cliente a buscar.
-     * @return El cliente encontrado si existe; null si no se encuentra.
+     * Busca un cliente por su idUsuario
      */
     public static Cliente findById(int id) {
         Cliente cliente = null;
         Connection con = ConnectionDB.getConnection();
-        String sql = "SELECT * FROM cliente WHERE idCliente = ?";
+        String sql = "SELECT * FROM cliente WHERE idUsuario = ?";
 
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
+
+            // Si lo encuentra, lo convierte en objeto Cliente
             if (rs.next()) {
                 cliente = new Cliente();
-                cliente.setIdCliente(rs.getInt("idCliente"));
-                cliente.setNombre(rs.getString("nombre"));
-                cliente.setEmail(rs.getString("email"));
+                cliente.setIdUsuario(rs.getInt("idUsuario"));
                 cliente.setDireccion(rs.getString("direccion"));
                 cliente.setFechaNacimiento(rs.getString("fechaNacimiento"));
                 cliente.setNivelFidelidad(rs.getString("nivelFidelidad"));
@@ -110,45 +97,37 @@ public class ClienteDAO {
         return cliente;
     }
 
-
     /**
-     * Actualiza los datos de un cliente existente en la base de datos.
-     *
-     * @param cliente El cliente con los datos actualizados.
+     * Actualiza los datos de un cliente existente
      */
     public static void update(Cliente cliente) {
-        String sql = "UPDATE cliente SET nombre = ?, email = ?, direccion = ?, fechaNacimiento = ?, nivelFidelidad = ? WHERE idCliente = ?";
+        String sql = "UPDATE cliente SET direccion = ?, fechaNacimiento = ?, nivelFidelidad = ? WHERE idUsuario = ?";
         Connection con = ConnectionDB.getConnection();
 
         try {
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, cliente.getNombre());
-            pst.setString(2, cliente.getEmail());
-            pst.setString(3, cliente.getDireccion());
-            pst.setString(4, cliente.getFechaNacimiento());
-            pst.setString(5, cliente.getNivelFidelidad());
-            pst.setInt(6, cliente.getIdCliente());
+            pst.setString(1, cliente.getDireccion());
+            pst.setString(2, cliente.getFechaNacimiento());
+            pst.setString(3, cliente.getNivelFidelidad());
+            pst.setInt(4, cliente.getIdUsuario());
 
-            pst.executeUpdate();
+            pst.executeUpdate(); // Ejecutamos el update
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-
     /**
-     * Elimina un cliente de la base de datos por su ID.
-     *
-     * @param id El ID del cliente a eliminar.
+     * Elimina un cliente por su idUsuario
      */
     public static void delete(int id) {
-        String sql = "DELETE FROM cliente WHERE idCliente = ?";
+        String sql = "DELETE FROM cliente WHERE idUsuario = ?";
         Connection con = ConnectionDB.getConnection();
 
         try {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, id);
-            pst.executeUpdate();
+            pst.executeUpdate(); // Ejecutamos el delete
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

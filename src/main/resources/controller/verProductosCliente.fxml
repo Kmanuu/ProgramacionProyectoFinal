@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Vista para que el cliente pueda ver los productos disponibles -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.VerProductosClienteController"
+            stylesheets="@../style/verProductosCliente.css">
+
+    <!-- Tabla centrada con columnas de productos -->
+    <center>
+        <TableView fx:id="tablaProductos" prefHeight="400" prefWidth="600">
+            <columns>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="200"/>
+                <TableColumn fx:id="colPrecio" text="Precio" prefWidth="200"/>
+                <TableColumn fx:id="colStock" text="Stock" prefWidth="200"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- Botón inferior para volver al menú del cliente -->
+    <bottom>
+        <HBox alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button fx:id="btnVolver" text="Volver al menú" onAction="#onVolver"/>
+        </HBox>
+    </bottom>
+</BorderPane>

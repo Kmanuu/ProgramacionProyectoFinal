@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Menú principal del cliente tras iniciar sesión -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.MenuClienteController"
+      stylesheets="@../style/menuCliente.css"
+      alignment="CENTER" spacing="15">
+
+    <!-- Espaciado interior del menú -->
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Título del menú -->
+    <Label text="Menú Cliente" style="-fx-font-size: 20px;"/>
+
+    <!-- Botón para ver productos -->
+    <Button fx:id="btnVer" text="🛍 Ver productos"
+            onAction="#onVerProductos" prefWidth="200"/>
+
+    <!-- Botón para hacer pedido -->
+    <Button fx:id="btnPedir" text="🛒 Hacer pedido"
+            onAction="#onHacerPedido" prefWidth="200"/>
+
+    <!-- Botón para cerrar sesión -->
+    <Button fx:id="btnSalir" text="🚪 Cerrar sesión"
+            onAction="#onCerrarSesion" prefWidth="200"/>
+</VBox>

@@ -1,8 +1,9 @@
 package model;
 
+// Clase que representa un producto disponible en la tienda
 public class Producto {
 
-    // Atributos
+    // Atributos del producto
     private int idProducto;
     private String nombre;
     private String marca;
@@ -12,9 +13,10 @@ public class Producto {
     private int stock;
     private String imagen;
 
-    // Constructores
+    // Constructor vacío (necesario para DAOs o JavaFX)
     public Producto() {}
 
+    // Constructor completo con todos los datos
     public Producto(int idProducto, String nombre, String marca, String categoria, int anio, double precio, int stock, String imagen) {
         this.idProducto = idProducto;
         this.nombre = nombre;
@@ -26,7 +28,14 @@ public class Producto {
         this.imagen = imagen;
     }
 
-    // Getters y Setters
+    // Constructor rápido para cuando solo se necesita nombre, precio y stock
+    public Producto(String nombre, double precio, int stock) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
+    // Getters y setters para todos los campos
     public int getIdProducto() { return idProducto; }
     public void setIdProducto(int idProducto) { this.idProducto = idProducto; }
 
@@ -51,10 +60,9 @@ public class Producto {
     public String getImagen() { return imagen; }
     public void setImagen(String imagen) { this.imagen = imagen; }
 
-    // Métodos
+    // toString para mostrar el producto de forma resumida
     @Override
     public String toString() {
         return nombre + " (" + marca + ", " + anio + ")";
     }
 }
-

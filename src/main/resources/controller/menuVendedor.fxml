@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Menú principal del vendedor tras iniciar sesión -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.MenuVendedorController"
+      stylesheets="@../style/menuVendedor.css"
+      alignment="CENTER" spacing="15">
+
+    <!-- Márgenes internos -->
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Título del menú -->
+    <Label text="Menú Vendedor" style="-fx-font-size: 20px;"/>
+
+    <!-- Botón para ver productos -->
+    <Button fx:id="btnVer" text="📦 Ver productos"
+            onAction="#onVerProductos" prefWidth="200"/>
+
+    <!-- Botón para añadir un nuevo producto -->
+    <Button fx:id="btnAnadir" text="➕ Añadir producto"
+            onAction="#onAnadirProducto" prefWidth="200"/>
+
+    <!-- Botón para editar o eliminar productos -->
+    <Button fx:id="btnEditar" text="✏️ Editar / Eliminar producto"
+            onAction="#onEditarProducto" prefWidth="200"/>
+
+    <!-- Botón para cerrar sesión -->
+    <Button fx:id="btnSalir" text="🚪 Cerrar sesión"
+            onAction="#onCerrarSesion" prefWidth="200"/>
+
+</VBox>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Vista para editar o eliminar productos como vendedor -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<!-- Controlador asociado y hoja de estilos enlazada -->
+<BorderPane fx:controller="controller.EditarEliminarProductoController"
+            stylesheets="@../style/EditarEliminar.css"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <!-- Zona central con tabla de productos -->
+    <center>
+        <TableView fx:id="tabla" prefHeight="300">
+            <columns>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="200"/>
+                <TableColumn fx:id="colPrecio" text="Precio" prefWidth="150"/>
+                <TableColumn fx:id="colStock" text="Stock" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- Zona inferior con botones -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Editar" onAction="#onEditar"/>
+            <Button text="Eliminar" onAction="#onEliminar"/>
+            <Button text="Volver" onAction="#onVolver"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

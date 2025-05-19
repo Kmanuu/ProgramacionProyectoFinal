@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Formulario para editar producto desde tabla -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.EditarProductoFormController"
+      stylesheets="@../style/editarProductoForm.css"
+      spacing="10" alignment="CENTER">
+
+    <!-- Márgenes internos -->
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Título del formulario -->
+    <Label text="Editar Producto" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+    <!-- Campo: Nombre -->
+    <HBox spacing="5">
+        <Label text="Nombre:" minWidth="70"/>
+        <TextField fx:id="nombreField" prefWidth="200"/>
+    </HBox>
+
+    <!-- Campo: Precio -->
+    <HBox spacing="5">
+        <Label text="Precio:" minWidth="70"/>
+        <TextField fx:id="precioField" prefWidth="200"/>
+    </HBox>
+
+    <!-- Campo: Stock -->
+    <HBox spacing="5">
+        <Label text="Stock:" minWidth="70"/>
+        <TextField fx:id="stockField" prefWidth="200"/>
+    </HBox>
+
+    <!-- Botón para guardar -->
+    <Button text="Guardar cambios" onAction="#onGuardar"/>
+</VBox>

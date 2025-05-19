@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Vista para que el cliente haga un pedido -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.HacerPedidoController"
+      stylesheets="@../style/hacerPedido.css"
+      spacing="10" alignment="CENTER">
+
+    <!-- Márgenes internos -->
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Título -->
+    <Label text="Hacer Pedido" style="-fx-font-size: 20px;" />
+
+    <!-- ComboBox para seleccionar producto -->
+    <ComboBox fx:id="comboProductos" prefWidth="200"/>
+
+    <!-- Campo de cantidad -->
+    <TextField fx:id="txtCantidad" promptText="Cantidad" prefWidth="200"/>
+
+    <!-- Botones -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Confirmar" onAction="#onConfirmar"/>
+        <Button text="Volver" onAction="#onVolver"/>
+    </HBox>
+</VBox>

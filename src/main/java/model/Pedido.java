@@ -1,16 +1,18 @@
 package model;
 
+// Clase que representa un pedido hecho por un cliente
 public class Pedido {
 
-    // Atributos
+    // Atributos principales del pedido
     private int idPedido;
     private int idCliente;
     private String fecha;
     private String estado;
 
-    // Constructores
+    // Constructor vacío (necesario para DAOs y JavaFX)
     public Pedido() {}
 
+    // Constructor completo
     public Pedido(int idPedido, int idCliente, String fecha, String estado) {
         this.idPedido = idPedido;
         this.idCliente = idCliente;
@@ -18,7 +20,7 @@ public class Pedido {
         this.estado = estado;
     }
 
-    // Getters y Setters
+    // Getters y setters para acceder y modificar los datos
     public int getIdPedido() { return idPedido; }
     public void setIdPedido(int idPedido) { this.idPedido = idPedido; }
 
@@ -31,10 +33,9 @@ public class Pedido {
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
 
-    // Métodos
+    // Método toString útil para mostrar info por consola o pruebas
     @Override
     public String toString() {
         return "Pedido #" + idPedido + " (Cliente: " + idCliente + ", Fecha: " + fecha + ")";
     }
 }
-
