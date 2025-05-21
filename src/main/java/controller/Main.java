@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 /**
- * Clase principal para lanzar la aplicación JavaFX.
+ * Clase principal para lanzar la aplicación JavaFX. de otra forma no me funcionaba
  */
 public class Main extends Application {
 

@@ -52,6 +52,7 @@ public class HacerPedidoController {
     private void onConfirmar() {
         Cliente cliente = Sesion.getClienteActual();
 
+        // Comprobamos que el cliente esté en sesión
         if (cliente == null) {
             mostrarAlerta("Error", "No se detectó sesión del cliente.");
             return;
@@ -60,6 +61,7 @@ public class HacerPedidoController {
         Producto producto = comboProductos.getValue();
         String cantidadStr = txtCantidad.getText();
 
+        // Validamos que el producto y la cantidad sean válidos
         if (producto == null || cantidadStr.isEmpty()) {
             mostrarAlerta("Error", "Selecciona un producto y escribe una cantidad.");
             return;
@@ -68,6 +70,7 @@ public class HacerPedidoController {
         try {
             int cantidad = Integer.parseInt(cantidadStr);
 
+            // Validamos que la cantidad sea positiva y no exceda el stock
             if (cantidad <= 0 || cantidad > producto.getStock()) {
                 mostrarAlerta("Error", "Cantidad inválida o sin stock.");
                 return;
@@ -97,12 +100,14 @@ public class HacerPedidoController {
         }
     }
 
+   // Controla la opcion de retroceder en el menu
     @FXML
     private void onVolver() {
         Stage stage = (Stage) comboProductos.getScene().getWindow();
         stage.close();
     }
 
+    // Método para mostrar alertas
     private void mostrarAlerta(String titulo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);
@@ -110,4 +115,6 @@ public class HacerPedidoController {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+
+    // Esta clase me ha dado millones de cabezas, sin dudas la que mas me ha costado
 }

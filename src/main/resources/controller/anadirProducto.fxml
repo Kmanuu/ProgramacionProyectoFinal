@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<!-- FXML para añadir productos, con estilo visual mejorado -->
+<!-- FXML para añadir productos -->
 <GridPane xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.AnadirProductoController"
           stylesheets="@../style/AnadirProducto.css"

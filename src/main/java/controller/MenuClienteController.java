@@ -20,11 +20,13 @@ public class MenuClienteController {
         this.clienteLogueado = cliente;
     }
 
+    // Metodo que abre la ventana de ver productos
     @FXML
     private void onVerProductos() {
         abrirVentanaSimple("/controller/verProductosCliente.fxml", "Ver productos");
     }
 
+    // Metodo que abre la ventana de hacer pedido
     @FXML
     private void onHacerPedido() {
         try {
@@ -43,6 +45,7 @@ public class MenuClienteController {
     }
 
 
+    // Metodo para cerrar sesion en nuestra cuenta
     @FXML
     private void onCerrarSesion() {
         abrirVentanaSimple("/controller/login.fxml", "Login");
@@ -50,6 +53,7 @@ public class MenuClienteController {
         actual.close();
     }
 
+    // Metodo para abrir la ventana
     private void abrirVentanaSimple(String rutaFXML, String titulo) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
@@ -62,4 +66,6 @@ public class MenuClienteController {
             e.printStackTrace();
         }
     }
+
+    // Esta clase me ha dado mil dolores de cabeza
 }

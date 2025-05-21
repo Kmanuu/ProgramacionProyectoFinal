@@ -1,0 +1,135 @@
+@startuml
+package model {
+    abstract class Usuario {
+        - int idUsuario
+        - String nombre
+        - String email
+        - String contrasena
+        --
+        + Usuario()
+        + Usuario(int idUsuario, String nombre, String email, String contrasena)
+        + int getIdUsuario()
+        + void setIdUsuario(int idUsuario)
+        + String getNombre()
+        + void setNombre(String nombre)
+        + String getEmail()
+        + void setEmail(String email)
+        + String getContrasena()
+        + void setContrasena(String contrasena)
+        + abstract void mostrarInfo()
+    }
+
+    class Cliente {
+        - String direccion
+        - String fechaNacimiento
+        - String nivelFidelidad
+        --
+        + Cliente()
+        + Cliente(int idUsuario, String nombre, String email, String contrasena, String direccion, String fechaNacimiento, String nivelFidelidad)
+        + String getDireccion()
+        + void setDireccion(String direccion)
+        + String getFechaNacimiento()
+        + void setFechaNacimiento(String fechaNacimiento)
+        + String getNivelFidelidad()
+        + void setNivelFidelidad(String nivelFidelidad)
+        + void mostrarInfo()
+    }
+
+    class Vendedor {
+        - String tienda
+        - String telefonoContacto
+        - String direccionTienda
+        - String descripcionTienda
+        --
+        + Vendedor()
+        + Vendedor(int idUsuario, String nombre, String email, String contrasena, String tienda, String telefonoContacto, String direccionTienda, String descripcionTienda)
+        + String getTienda()
+        + void setTienda(String tienda)
+        + String getTelefonoContacto()
+        + void setTelefonoContacto(String telefonoContacto)
+        + String getDireccionTienda()
+        + void setDireccionTienda(String direccionTienda)
+        + String getDescripcionTienda()
+        + void setDescripcionTienda(String descripcionTienda)
+        + void mostrarInfo()
+    }
+
+    class Producto {
+        - int idProducto
+        - String nombre
+        - String marca
+        - String categoria
+        - int anio
+        - double precio
+        - int stock
+        - String imagen
+        --
+        + Producto()
+        + Producto(int idProducto, String nombre, String marca, String categoria, int anio, double precio, int stock, String imagen)
+        + Producto(String nombre, double precio, int stock)
+        + int getIdProducto()
+        + void setIdProducto(int idProducto)
+        + String getNombre()
+        + void setNombre(String nombre)
+        + String getMarca()
+        + void setMarca(String marca)
+        + String getCategoria()
+        + void setCategoria(String categoria)
+        + int getAnio()
+        + void setAnio(int anio)
+        + double getPrecio()
+        + void setPrecio(double precio)
+        + int getStock()
+        + void setStock(int stock)
+        + String getImagen()
+        + void setImagen(String imagen)
+    }
+
+    class Pedido {
+        - int idPedido
+        - int idCliente
+        - String fecha
+        - String estado
+        --
+        + Pedido()
+        + Pedido(int idPedido, int idCliente, String fecha, String estado)
+        + int getIdPedido()
+        + void setIdPedido(int idPedido)
+        + int getIdCliente()
+        + void setIdCliente(int idCliente)
+        + String getFecha()
+        + void setFecha(String fecha)
+        + String getEstado()
+        + void setEstado(String estado)
+    }
+
+    class PedidoProducto {
+        - int idPedido
+        - int idProducto
+        - int cantidad
+        --
+        + PedidoProducto()
+        + PedidoProducto(int idPedido, int idProducto, int cantidad)
+        + int getIdPedido()
+        + void setIdPedido(int idPedido)
+        + int getIdProducto()
+        + void setIdProducto(int idProducto)
+        + int getCantidad()
+        + void setCantidad(int cantidad)
+    }
+
+    class Sesion {
+        - static Cliente clienteActual
+        --
+        + static void setClienteActual(Cliente cliente)
+        + static Cliente getClienteActual()
+        + static void cerrarSesion()
+    }
+
+    Usuario <|-- Cliente
+    Usuario <|-- Vendedor
+    Pedido "1" *-- "1" Cliente
+    PedidoProducto "1" *-- "1" Pedido
+    PedidoProducto "1" *-- "1" Producto
+}
+@enduml
